@@ -1,0 +1,15 @@
+name: mlflow-tutorial
+
+entry_points:
+  main:
+    parameters:
+      lr:        {type: float, default: 3e-4}
+      epochs:    {type: int,    default: 5}
+      batch_size:{type: int,    default: 128}
+      run_name:  {type: str,    default: "mnist-cnn"}
+    command: >
+      uv run --env-file=.env --extra cu124 train.py
+        --lr {lr}
+        --epochs {epochs}
+        --batch-size {batch_size}
+        --run-name {run_name}
